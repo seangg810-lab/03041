@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="en">
     <head>
         <title>POPCAT CLASSIC</title>
@@ -7,8 +6,8 @@
             body {
                 margin: 0;
                 font-family: sans-serif;
+                user-select: none;
             }
-
             .container {
                 height: 100vh;
                 display: flex;
@@ -16,47 +15,62 @@
                 align-items: center;
                 background-color: #bdaa90;
             }
-
-            .container img {
+            .title {
                 width: 80%;
                 margin-top: 2em;
                 max-width: 600px;
             }
-
             .cat-img {
                 width: 100%;
                 text-align: center;
                 color: white;
                 font-size: 80px;
                 -webkit-text-stroke: 3px black;
-                user-select: none;
-                flex-grow: 1;
+                flex: 1;
                 max-width: 800px;
             }
-
             #p {
                 background-image: url('imgs/p.png');
                 background-position: bottom;
                 background-size: contain;
                 background-repeat: no-repeat;
             }
-
+             #p2 {
+                background-image: url('imgs/p.png');
+                background-position: bottom;
+                background-size: contain;
+                background-repeat: no-repeat;
+            }
             #op {
                 background-image: url('imgs/op.png');
                 background-position: bottom;
                 background-size: contain;
                 background-repeat: no-repeat;
-                width: 100%;
-                height: 100%;
             }
         </style>
     </head>
     <body>
         <div class="container">
-            <img class="title" src="imgs/popcat.svg" alt="POPCAT">
-            <div class="cat-img">0</div>
-            <div class="cat-img" id="p"></div>
-            <div class="cat-img" id="op"></div>
+            <img class="title" src="imgs/popcat.svg" alt="POPCAT CLASSIC" >
+            <div class="cat-img" id="p">0</div>
+            
         </div>
+        <div class="container" id="p2"></div>
+
     </body>
+    <script>
+            let count = 0;
+            let catImg = document.getElementById('p');
+            function addCount() {
+                count ++;
+                catImg.innerHTML = count;
+                catImg.id = 'op';
+            }
+            let close = () => {
+                catImg.id = 'p';
+            }
+
+           document.addEventListener('pointerdown', addCount);
+           document.addEventListener('pointerup',close);
+        </script>
 </html>
